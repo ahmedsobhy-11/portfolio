@@ -1,7 +1,7 @@
 {
   "name": "infinite-portfolio",
   "version": "1.0.0",
-  "description": "Level ∞ interactive portfolio - 3D Universe background (Three.js) starter",
+  "description": "Level infinity interactive portfolio - 3D universe background (Three.js) starter",
   "main": "public/index.html",
   "scripts": {
     "start": "npx http-server -c-1 . -p 3000",
@@ -17,9 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "three": "^0.158.0",
     "gsap": "^3.12.0",
-    "matter-js": "^0.19.0",
-    "tsparticles": "^2.9.3"
+    "three": "^0.158.0"
   }
 }

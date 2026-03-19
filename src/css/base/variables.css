@@ -1,13 +1,12 @@
-/* variables.css - color system for cyberpunk + glass look */
-:root{
-  --bg: #0a0a0a;
-  --neon-cyan: #00f0ff;
-  --neon-pink: #ff2df7;
-  --neon-accent: #7df9ff;
-  --glass-bg: rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.06);
-  --text: #e6f7ff;
-  --muted: #99a0a6;
-  --radius: 12px;
+/* variables.css - portfolio design tokens */
+:root {
+  --bg: #050505;
+  --text: #ffffff;
+  --nav-color: #a200ff;
+  --glass-bg: rgba(10, 10, 10, 0.6);
+  --glass-bg-soft: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --muted: rgba(255, 255, 255, 0.8);
   --max-width: 1200px;
+  --section-width: 80%;
 }

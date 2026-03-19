@@ -1,0 +1,106 @@
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+#top-nav {
+  position: fixed;
+  top: 25px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: var(--section-width);
+  max-width: var(--max-width);
+  padding: 25px 0;
+  border-radius: 20px;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  font-family: inherit;
+  pointer-events: auto;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  position: relative;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--nav-color);
+  text-transform: capitalize;
+  transition: text-shadow 0.3s, opacity 0.3s;
+  padding: 10px 24px;
+  border-radius: 8px;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+  text-shadow: 0 0 10px var(--nav-color);
+}
+
+.nav-links a.active,
+.nav-clone.active {
+  text-shadow: 0 0 15px var(--nav-color);
+}
+
+.nav-links a.active::before,
+.nav-clone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 2px;
+  background: conic-gradient(from var(--angle), transparent 50%, var(--nav-color), #00d2ff, #ff00ff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spinBorder 2.5s linear infinite;
+  pointer-events: none;
+}
+
+.nav-clone {
+  position: absolute !important;
+  z-index: 9999 !important;
+  margin: 0 !important;
+  transition: none !important;
+  pointer-events: none !important;
+  border-radius: 8px;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--nav-color);
+  text-transform: capitalize;
+  padding: 10px 24px;
+}
+
+@keyframes spinBorder {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@media (max-width: 768px) {
+  #top-nav,
+  .container,
+  #home-content-wrapper {
+    width: 95% !important;
+  }
+}

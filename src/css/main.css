@@ -1,19 +1,10 @@
-/* main.css - imports base + variables + layout pieces */
+/* main.css - portfolio stylesheet entrypoint */
 @import "./base/reset.css";
 @import "./base/variables.css";
+@import "./components/navigation.css";
+@import "./components/buttons.css";
+@import "./components/cards.css";
+@import "./components/cursor.css";
 @import "./layout/hero.css";
-
-/* global helpers */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* small responsive tweaks */
-@media (max-width: 720px) {
-  .hero-inner { padding: 24px; border-radius: 10px; }
-  #title { text-align:center; font-size: clamp(22px, 8vw, 44px); }
-  .subtitle { text-align:center; }
-  #hero { padding: 6vh 12px; }
-}
+@import "./layout/contact.css";
+@import "./layout/sections.css";

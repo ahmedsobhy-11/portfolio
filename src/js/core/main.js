@@ -1,81 +1,56 @@
-/**
- * main.js
- * Core engine for the portfolio
- */
-
+import { initSectionNavigation } from "../animations/scroll.js";
+import { initTypingAnimation } from "../animations/typing.js";
 import { initThreeBackground } from "../background/threeBackground.js";
+import { initAboutScrollAnimation } from "../animations/aboutScroll.js";
 
-console.log("Portfolio Engine Started");
+const cleanupTasks = [];
 
-
-
-/* =========================
-   START THREE BACKGROUND
-========================= */
-
-initThreeBackground();
-
-
-
-/* =========================
-   TITLE TYPING ANIMATION
-========================= */
-
-const titleEl = document.getElementById("title");
-
-if (titleEl) {
-
-const fullText = titleEl.textContent.trim();
-
-titleEl.textContent = "";
-
-let i = 0;
-
-function type(){
-
-if(i < fullText.length){
-
-titleEl.textContent += fullText[i];
-
-i++;
-
-setTimeout(type,40);
-
+function registerCleanup(cleanup) {
+  if (typeof cleanup === "function") {
+    cleanupTasks.push(cleanup);
+  }
 }
 
-}
+function runCleanup() {
+  while (cleanupTasks.length > 0) {
+    const cleanup = cleanupTasks.pop();
 
-type();
-
+    try {
+      cleanup();
+    } catch (error) {
+      console.error("Cleanup failed:", error);
+    }
+  }
 }
 
 
-
-/* =========================
-   BUTTON INTERACTION
-========================= */
+[
+  initThreeBackground,
+  initTypingAnimation,
+  initSectionNavigation,
+  initAboutScrollAnimation,
+].forEach((initializer) => registerCleanup(initializer()));
 
 const viewBtn = document.getElementById("view-work");
 
-if(viewBtn){
+if (viewBtn) {
+  const handleViewClick = () => {
+    viewBtn.animate(
+      [
+        { transform: "translateY(0px)" },
+        { transform: "translateY(-6px)" },
+        { transform: "translateY(0px)" },
+      ],
+      {
+        duration: 400,
+        easing: "ease-out",
+      },
+    );
+  };
 
-viewBtn.addEventListener("click",()=>{
-
-viewBtn.animate(
-
-[
-{transform:"translateY(0px)"},
-{transform:"translateY(-6px)"},
-{transform:"translateY(0px)"}
-],
-
-{
-duration:400,
-easing:"ease-out"
+  viewBtn.addEventListener("click", handleViewClick);
+  registerCleanup(() => viewBtn.removeEventListener("click", handleViewClick));
 }
 
-);
-
-});
-
-}
+window.addEventListener("pagehide", runCleanup, { once: true });
+window.addEventListener("beforeunload", runCleanup, { once: true });

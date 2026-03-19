@@ -1,6 +1,10 @@
 export function initThreeBackground() {
     const container = document.getElementById("webgl-background");
-    if (!container) return;
+    if (!container || typeof THREE === "undefined") return () => {};
+
+    if (typeof container.__threeCleanup === "function") {
+        container.__threeCleanup();
+    }
 
     /* =========================
        SETTINGS
@@ -9,9 +13,10 @@ export function initThreeBackground() {
     const MAX_SPARKS = 150;
     const SEGMENTS_PER_SPARK = 6;
     const ATTRACTION_RADIUS = 10.0;
-    const RING_RADIUS = 3.5;
     const PULL_STRENGTH = 0.08;
     const FIELD_SIZE = 40; // Size of the floating area
+    let animationFrameId = null;
+    let isDisposed = false;
 
     // Scene
     const scene = new THREE.Scene();
@@ -209,7 +214,11 @@ export function initThreeBackground() {
     const mouse = new THREE.Vector2(999, 999);
     const mousePos3D = new THREE.Vector3();
 
-    window.addEventListener("mousemove", (e) => {
+    const resetMouse = () => {
+        mouse.set(999, 999);
+    };
+
+    const handleMouseMove = (e) => {
         // Map 2D mouse exactly to the 3D plane
         mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
@@ -218,15 +227,19 @@ export function initThreeBackground() {
         vector.unproject(camera);
         const dir = vector.sub(camera.position).normalize();
 
+        if (Math.abs(dir.z) < 0.0001) {
+            return;
+        }
+
         // Find intersection where z = 0
         const distance = -camera.position.z / dir.z;
         const pos = camera.position.clone().add(dir.multiplyScalar(distance));
         mousePos3D.copy(pos);
-    });
+    };
 
-    window.addEventListener("mouseout", () => {
-        mouse.set(999, 999);
-    });
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", resetMouse);
+    window.addEventListener("blur", resetMouse);
 
     /* =========================
        ANIMATION LOOP
@@ -235,7 +248,11 @@ export function initThreeBackground() {
     let lastTime = 0;
 
     function animate() {
-        requestAnimationFrame(animate);
+        if (isDisposed) {
+            return;
+        }
+
+        animationFrameId = requestAnimationFrame(animate);
 
         const time = clock.getElapsedTime();
         const dt = time - lastTime;
@@ -459,8 +476,6 @@ export function initThreeBackground() {
                     sparkPositions[pIdx + 5] = p2.z;
 
                     const cIdx = lineIdx * 6;
-                    const t1 = s / SEGMENTS_PER_SPARK;
-                    const t2 = (s + 1) / SEGMENTS_PER_SPARK;
 
                     // Sync spark color with current dynamic particle color
                     const pCol = particlesMat.color;
@@ -490,10 +505,49 @@ export function initThreeBackground() {
     /* =========================
        RESIZE
     ========================= */
-    window.addEventListener("resize", () => {
+    const handleResize = () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         camera.position.z = Math.max(12, 12 * (window.innerHeight / window.innerWidth));
         renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    const cleanup = () => {
+        if (isDisposed) {
+            return;
+        }
+
+        isDisposed = true;
+        container.__threeCleanup = null;
+
+        if (animationFrameId !== null) {
+            cancelAnimationFrame(animationFrameId);
+        }
+
+        window.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseleave", resetMouse);
+        window.removeEventListener("blur", resetMouse);
+        window.removeEventListener("resize", handleResize);
+
+        particlesGeo.dispose();
+        particlesMat.dispose();
+        particleTexture.dispose();
+        coreTexture.dispose();
+        coreMat.dispose();
+        sparkGeo.dispose();
+        sparkMat.dispose();
+        renderer.dispose();
+
+        if (typeof renderer.forceContextLoss === "function") {
+            renderer.forceContextLoss();
+        }
+
+        container.replaceChildren();
+    };
+
+    container.__threeCleanup = cleanup;
+
+    return cleanup;
 }
