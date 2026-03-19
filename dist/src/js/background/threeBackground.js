@@ -9,9 +9,12 @@ export function initThreeBackground() {
     /* =========================
        SETTINGS
     ========================= */
-    const PARTICLE_COUNT = 1500;
-    const MAX_SPARKS = 150;
-    const SEGMENTS_PER_SPARK = 6;
+    const isCoarsePointer = typeof window.matchMedia === "function"
+        && window.matchMedia("(pointer: coarse)").matches;
+    const isSmallViewport = window.innerWidth <= 900;
+    const PARTICLE_COUNT = isCoarsePointer || isSmallViewport ? 900 : 1500;
+    const MAX_SPARKS = isCoarsePointer || isSmallViewport ? 70 : 150;
+    const SEGMENTS_PER_SPARK = isCoarsePointer || isSmallViewport ? 4 : 6;
     const ATTRACTION_RADIUS = 10.0;
     const PULL_STRENGTH = 0.08;
     const FIELD_SIZE = 40; // Size of the floating area
@@ -27,9 +30,9 @@ export function initThreeBackground() {
     camera.position.z = Math.max(12, 12 * (window.innerHeight / window.innerWidth));
 
     // Renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: !isCoarsePointer, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isCoarsePointer ? 1.2 : 2));
     container.innerHTML = "";
     container.appendChild(renderer.domElement);
 
@@ -70,8 +73,8 @@ export function initThreeBackground() {
     /* =========================
        GEOMETRY - PARTICLES
     ========================= */
-    const COMET_COUNT = 30; // Meteors shooting to center
-    const STRAY_COUNT = 300; // Random asteroids/atoms floating outside
+    const COMET_COUNT = isCoarsePointer || isSmallViewport ? 18 : 30; // Meteors shooting to center
+    const STRAY_COUNT = isCoarsePointer || isSmallViewport ? 160 : 300; // Random asteroids/atoms floating outside
     const ORBITAL_COUNT = PARTICLE_COUNT - COMET_COUNT - STRAY_COUNT;
 
     const ORBIT_COUNT = 5; // Number of distinct planet/electron orbital paths
@@ -218,10 +221,10 @@ export function initThreeBackground() {
         mouse.set(999, 999);
     };
 
-    const handleMouseMove = (e) => {
+    const updatePointer = (clientX, clientY) => {
         // Map 2D mouse exactly to the 3D plane
-        mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        mouse.x = (clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(clientY / window.innerHeight) * 2 + 1;
 
         const vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
         vector.unproject(camera);
@@ -237,7 +240,25 @@ export function initThreeBackground() {
         mousePos3D.copy(pos);
     };
 
+    const handleMouseMove = (e) => {
+        updatePointer(e.clientX, e.clientY);
+    };
+
+    const handleTouchMove = (e) => {
+        const touch = e.touches[0];
+
+        if (!touch) {
+            return;
+        }
+
+        updatePointer(touch.clientX, touch.clientY);
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchstart", handleTouchMove, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", resetMouse, { passive: true });
+    window.addEventListener("touchcancel", resetMouse, { passive: true });
     document.addEventListener("mouseleave", resetMouse);
     window.addEventListener("blur", resetMouse);
 
@@ -510,6 +531,7 @@ export function initThreeBackground() {
         camera.updateProjectionMatrix();
         camera.position.z = Math.max(12, 12 * (window.innerHeight / window.innerWidth));
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, isCoarsePointer ? 1.2 : 2));
     };
 
     window.addEventListener("resize", handleResize);
@@ -527,6 +549,10 @@ export function initThreeBackground() {
         }
 
         window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("touchstart", handleTouchMove);
+        window.removeEventListener("touchmove", handleTouchMove);
+        window.removeEventListener("touchend", resetMouse);
+        window.removeEventListener("touchcancel", resetMouse);
         document.removeEventListener("mouseleave", resetMouse);
         window.removeEventListener("blur", resetMouse);
         window.removeEventListener("resize", handleResize);

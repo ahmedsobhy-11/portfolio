@@ -41,6 +41,8 @@
   filter: drop-shadow(0 0 10px rgba(162, 0, 255, 0.4));
   font-family: inherit;
   letter-spacing: normal;
+  line-height: 1.1;
+  max-width: 100%;
 }
 
 .floating-text-link:hover {
@@ -64,6 +66,7 @@
   width: 100%;
   margin-top: 60px;
   opacity: 0.6;
+  line-height: 1.1;
 }
 
 .target-word.highlight {
@@ -83,5 +86,56 @@
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 88%;
+  }
+
+  .section-heading--about,
+  .section-heading--skills,
+  .section-heading--service {
+    margin-top: -24px;
+  }
+
+  .floating-text-link {
+    font-size: clamp(2.8rem, 6vw, 3.6rem);
+  }
+
+  .closing-text-link {
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 92%;
+  }
+
+  .section-heading {
+    margin-bottom: 16px;
+  }
+
+  .section-heading--about,
+  .section-heading--skills,
+  .section-heading--service {
+    margin-top: 0;
+  }
+
+  .floating-text-link {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .closing-text-link {
+    font-size: clamp(1.7rem, 6vw, 2.2rem);
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 24px);
   }
 }

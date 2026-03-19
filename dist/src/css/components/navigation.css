@@ -28,6 +28,8 @@
 .nav-links {
   display: flex;
   gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
   font-family: inherit;
   pointer-events: auto;
 }
@@ -98,9 +100,39 @@
 }
 
 @media (max-width: 768px) {
-  #top-nav,
-  .container,
-  #home-content-wrapper {
-    width: 95% !important;
+  #top-nav {
+    top: 14px;
+    width: 94%;
+    padding: 14px 10px;
+    border-radius: 16px;
+  }
+
+  .nav-links {
+    gap: 10px;
+    width: 100%;
+  }
+
+  .nav-links a,
+  .nav-clone {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  #top-nav {
+    width: calc(100% - 16px);
+    top: 8px;
+    padding: 10px 8px;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links a,
+  .nav-clone {
+    font-size: 13px;
+    padding: 8px 10px;
   }
 }

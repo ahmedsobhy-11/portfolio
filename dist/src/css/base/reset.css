@@ -59,7 +59,7 @@ section {
   min-height: 50vh;
   padding: 80px 0;
   text-align: left;
-  width: 100vw;
+  width: 100%;
 }
 
 section h1,
@@ -80,4 +80,33 @@ section p.subtitle {
   margin-bottom: 30px;
   text-align: left;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  section {
+    min-height: auto;
+    padding: 64px 0;
+  }
+
+  section h1,
+  section h2 {
+    font-size: 2.25rem;
+    margin-bottom: 16px;
+  }
+
+  section p.subtitle {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 56px 0;
+  }
+
+  section h1,
+  section h2 {
+    font-size: 1.9rem;
+  }
 }
