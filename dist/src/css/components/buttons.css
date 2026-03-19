@@ -1,0 +1,24 @@
+.action-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 600;
+  background: linear-gradient(90deg, #00f0ff, #ff00ff);
+  color: #000;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(255, 0, 255, 0.6);
+}

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ahmed Portfolio</title>
+
+    <link rel="stylesheet" href="./src/css/main.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Outfit:wght@400;600;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+</head>
+
+<body>
+
+    <nav id="top-nav">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#service">Service</a></li>
+        </ul>
+    </nav>
+
+    <div id="webgl-background"></div>
+
+    <!-- ==============================================
+     PAGE SECTIONS
+=============================================== -->
+    <section id="home">
+        <div id="home-content-wrapper">
+            <div class="hero-inner">
+                <div class="hero-text-side">
+                    <p class="greeting">HELLO, I'M</p>
+                    <h1 class="name">AHMED SOBHY</h1>
+                    <div class="typing-container">
+                        <span class="typing-text"></span><span class="cursor">|</span>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn" id="view-work">View My Work</button>
+                    </div>
+                </div>
+                <div class="hero-image-side">
+                    <div class="deco-glow-soft deco-shape"></div>
+                    <div class="deco-circle-striped deco-shape"></div>
+                    <div class="deco-star deco-shape"></div>
+                    <div class="deco-pattern-dots deco-shape"></div>
+                    <div class="profile-img-container">
+                        <img src="./src/assets/images/ChatGPT Image Mar 11, 2026, 11_15_10 PM.png" alt="Ahmed Sobhy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outer element removed as requested -->
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="floating-text-link target-word section-heading section-heading--about">&lt;About Me&gt;
+            </div>
+            <div class="about-card">
+                <div class="card-title">Who I'M</div>
+                <div class="card-content">
+                    <p class="en-text">
+                        A driven Computer Engineering student with a strong product-builder mindset and a deep obsession
+                        with technology. As a Full Stack Web Developer, I focus on engineering scalable,
+                        high-performance web products while adopting a hacker mindset to deeply understand, test, and
+                        secure modern systems through penetration testing. I am motivated by solving complex problems,
+                        turning ideas into impactful digital solutions, and creating technology that delivers real value
+                        in fast-evolving environments.
+                    </p>
+                    <p class="ar-text">
+                        مهندس حاسب طموح بعقلية Product Builder وهوس حقيقي بالتكنولوجيا، أركز على تصميم وبناء منتجات ويب
+                        متكاملة عالية الأداء وقابلة للتوسع كـ Full Stack Web Developer، مع تبني عقلية Hacker لفهم
+                        الأنظمة بعمق واكتشاف نقاط ضعفها وتأمينها من خلال Penetration Testing. أعمل بدافع الشغف وحل
+                        المشكلات المعقدة وتحويل الأفكار إلى حلول رقمية مؤثرة تحقق قيمة حقيقية للمستخدمين والأعمال في
+                        بيئة تقنية سريعة التطور.
+                    </p>
+
+                    <div class="contact-info-grid">
+                        <div class="contact-item">👤 <strong>NAME:</strong> Ahmed Sobhy Shaaban</div>
+                        <div class="contact-item">📍 <strong>ADDRESS:</strong> Helwan, Cairo, Egypt</div>
+                        <div class="contact-item">📞 <strong>PHONE:</strong> +201066141917</div>
+                    </div>
+
+                    <div class="floating-contact-wrap">
+
+                        <a href="mailto:ahmedalmasry272@gmail.com" title="Email Me">
+                            <div class="icon icon-mail">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+                                    width="1em" height="1em">
+                                    <path
+                                        d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
+                                </svg>
+                            </div>
+                        </a>
+
+                        <a href="./src/assets/images/Ahmed_Sobhy%20.cv.pdf" download="Ahmed_Sobhy_CV.pdf"
+                            title="Download CV">
+                            <div class="icon icon-cv" aria-label="Download CV">
+                                <span class="icon-label">CV</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/ahmed-sobhy-a19437316" target="_blank"
+                            title="LinkedIn Profile">
+                            <div class="icon icon-linkedin">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor"
+                                    width="1em" height="1em">
+                                    <path
+                                        d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+                                </svg>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="closing-text-link">&lt;/About Me&gt;</div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="floating-text-link target-word section-heading section-heading--skills">&lt;Skills&gt;</div>
+        </div>
+        <div class="container container--wide">
+            <div class="skills-pyramid">
+                <!-- Row 1: 10 Skills -->
+                <div class="skills-row">
+                    <div class="skill-badge" title="Python"><i
+                            class="devicon-python-plain colored"></i><span>Python</span></div>
+                    <div class="skill-badge" title="JavaScript"><i
+                            class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                    <div class="skill-badge" title="TypeScript"><i
+                            class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+                    <div class="skill-badge" title="C"><i class="devicon-c-plain colored"></i><span>C</span></div>
+                    <div class="skill-badge" title="C++"><i class="devicon-cplusplus-plain colored"></i><span>C++</span>
+                    </div>
+                    <div class="skill-badge" title="HTML"><i class="devicon-html5-plain colored"></i><span>HTML</span>
+                    </div>
+                    <div class="skill-badge" title="CSS"><i class="devicon-css3-plain colored"></i><span>CSS</span>
+                    </div>
+                    <div class="skill-badge" title="Tailwind"><i
+                            class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
+                    <div class="skill-badge" title="React"><i
+                            class="devicon-react-original colored"></i><span>React</span></div>
+                    <div class="skill-badge" title="Next.js"><i
+                            class="devicon-nextjs-plain colored"></i><span>Next.js</span></div>
+                </div>
+
+                <!-- Row 2: 9 Skills -->
+                <div class="skills-row">
+                    <div class="skill-badge" title="Node.js"><i
+                            class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+                    <div class="skill-badge" title="Flask"><i
+                            class="devicon-flask-original colored"></i><span>Flask</span></div>
+                    <div class="skill-badge" title="MySQL"><i class="devicon-mysql-plain colored"></i><span>MySQL</span>
+                    </div>
+                    <div class="skill-badge" title="PostgreSQL"><i
+                            class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
+                    <div class="skill-badge" title="Firebase"><i
+                            class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
+                    <div class="skill-badge" title="Redis"><i class="devicon-redis-plain colored"></i><span>Redis</span>
+                    </div>
+                    <div class="skill-badge" title="Docker"><i
+                            class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                    <div class="skill-badge" title="Git"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                    <div class="skill-badge" title="GitHub"><i
+                            class="devicon-github-original colored"></i><span>GitHub</span></div>
+                </div>
+
+                <!-- Row 3: 7 Skills -->
+                <div class="skills-row">
+                    <div class="skill-badge" title="Linux"><i class="devicon-linux-plain colored"></i><span>Linux</span>
+                    </div>
+                    <div class="skill-badge" title="Kali Linux"><i
+                            class="devicon-kalilinux-plain colored"></i><span>Kali Linux</span></div>
+                    <div class="skill-badge" title="Nmap"><i class="fa-solid fa-satellite-dish"
+                            style="color: #6fb022;"></i><span>Nmap</span></div>
+                    <div class="skill-badge" title="Burp Suite"><i class="fa-solid fa-shield-halved"
+                            style="color: #ff6633;"></i><span>Burp Suite</span></div>
+                    <div class="skill-badge" title="Metasploit"><i class="fa-solid fa-bolt-lightning"
+                            style="color: #0088cc;"></i><span>Metasploit</span></div>
+                    <div class="skill-badge" title="SQLmap"><i class="fa-solid fa-server"
+                            style="color: #ff0000;"></i><span>SQLmap</span></div>
+                    <div class="skill-badge" title="Wireshark"><i class="fa-solid fa-network-wired"
+                            style="color: #24497d;"></i><span>Wireshark</span></div>
+                </div>
+
+                <!-- Row 4: 6 Skills -->
+                <div class="skills-row">
+                    <div class="skill-badge" title="OWASP ZAP"><i class="fa-solid fa-bug-slash"
+                            style="color: #999999;"></i><span>OWASP ZAP</span></div>
+                    <div class="skill-badge" title="Hydra"><i class="fa-solid fa-key"
+                            style="color: #dddddd;"></i><span>Hydra</span></div>
+                    <div class="skill-badge" title="Hashcat"><i class="fa-solid fa-lock-open"
+                            style="color: #33ff33;"></i><span>Hashcat</span></div>
+                    <div class="skill-badge" title="Ghidra"><i class="fa-solid fa-dragon"
+                            style="color: #cc0000;"></i><span>Ghidra</span></div>
+                    <div class="skill-badge" title="AWS"><i
+                            class="devicon-amazonwebservices-plain-wordmark colored"></i><span>AWS</span></div>
+                    <div class="skill-badge" title="Vercel"><i
+                            class="devicon-vercel-plain colored"></i><span>Vercel</span></div>
+                </div>
+
+                <!-- Row 5: 4 Skills -->
+                <div class="skills-row">
+                    <div class="skill-badge" title="PyTorch"><i
+                            class="devicon-pytorch-plain colored"></i><span>PyTorch</span></div>
+                    <div class="skill-badge" title="OpenCV"><i
+                            class="devicon-opencv-plain colored"></i><span>OpenCV</span></div>
+                    <div class="skill-badge" title="NumPy"><i class="devicon-numpy-plain colored"></i><span>NumPy</span>
+                    </div>
+                    <div class="skill-badge" title="Jupyter"><i
+                            class="devicon-jupyter-plain colored"></i><span>Jupyter</span></div>
+                </div>
+
+                <!-- Row 6: 3 Skills -->
+                <div class="skills-row">
+                    <div class="skill-badge" title="Figma"><i class="devicon-figma-plain colored"></i><span>Figma</span>
+                    </div>
+                    <div class="skill-badge" title="Photoshop"><i
+                            class="devicon-photoshop-plain colored"></i><span>Photoshop</span></div>
+                    <div class="skill-badge" title="VS Code"><i class="devicon-vscode-plain colored"></i><span>VS
+                            Code</span></div>
+                </div>
+
+                <!-- Row 7: 1 Skill -->
+                <div class="skills-row">
+                    <div class="skill-badge" title="MS Office"><i class="fa-brands fa-microsoft"
+                            style="color: #d83b01;"></i><span>MS Office</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="closing-text-link">&lt;/Skills&gt;</div>
+        </div>
+    </section>
+
+    <section id="service">
+        <div class="container">
+            <div class="floating-text-link target-word section-heading section-heading--service">&lt;Services&gt;</div>
+        </div>
+        <div class="container container--wide">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-bg-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">FULL-STACK WEB DEVELOPMENT</h3>
+                        <p class="service-desc">
+                            Modern, high-performance web solutions developed with<br>
+                            React • Vue • Laravel • PHP<br>
+                            engineered for scalability, clean architecture, and exceptional UX.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-bg-icon">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">FRONTEND DEVELOPMENT</h3>
+                        <p class="service-desc">
+                            Responsive, high-performance interfaces built with<br>
+                            HTML / CSS / Tailwind / Bootstrap / JavaScript<br>
+                            engineered for speed and usability.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-bg-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">BACKEND DEVELOPMENT</h3>
+                        <p class="service-desc">
+                            Powerful APIs and dynamic systems developed with<br>
+                            Laravel • PHP • MySQL<br>
+                             optimized for performance, stability, and clean architecture.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-bg-icon">
+                        <i class="fa-solid fa-bug"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">BUG BOUNTY</h3>
+                        <p class="service-desc">
+                            HackerOne<br>
+                            Bugcrowd<br>
+                            Reporting<br>
+                            Triage Understanding
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-bg-icon">
+                        <i class="fa-shield-halved fa-solid"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">WEB SECURITY</h3>
+                        <p class="service-desc">
+                            XSS & Injection Attacks<br>
+                            Authentication & Session Bypass<br>
+                            Business Logic Exploits<br>
+                            SSRF & Access Control Issues
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-bg-icon">
+                        <i class="fa-solid fa-user-secret"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">PENETRATION TESTING</h3>
+                        <p class="service-desc">
+                            Web Application Testing<br>
+                            Network Security Testing<br>
+                            Mobile Application Testing<br>
+                            Vulnerability Assessment<br>
+                            Recon Methodology
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="closing-text-link">&lt;/Services&gt;</div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- THREE JS -->
+    <script src="./vendor/three.min.js"></script>
+
+    <!-- GSAP & SCROLLTRIGGER -->
+    <script src="./vendor/gsap.min.js"></script>
+    <script src="./vendor/ScrollTrigger.min.js"></script>
+
+    <!-- MAIN ENGINE -->
+    <script type="module" src="./src/js/core/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,364 @@
+.about-card {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 40px;
+  margin-top: 40px;
+  width: 100%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(162, 0, 255, 0.2);
+}
+
+.about-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #1d4ed8, #a200ff);
+  opacity: 0.5;
+}
+
+.about-card .card-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--nav-color);
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 15px rgba(162, 0, 255, 0.3);
+}
+
+.about-card .card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.about-card p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: white;
+  opacity: 0.9;
+}
+
+.about-card .en-text {
+  font-family: "Outfit", sans-serif;
+  text-align: left;
+}
+
+.about-card .ar-text {
+  font-family: "Cairo", sans-serif;
+  text-align: right;
+  direction: rtl;
+  font-weight: 400;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 25px;
+  margin-bottom: 25px;
+}
+
+.skills-pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  max-width: 1380px;
+  margin: 30px auto 50px;
+  padding: 0 10px;
+}
+
+.skills-row {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+@keyframes floating-badge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.skill-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95px;
+  height: 95px;
+  background: rgba(30, 25, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -3px 10px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: floating-badge 5s ease-in-out infinite;
+}
+
+.skill-badge:nth-child(even) {
+  animation-delay: 1s;
+  animation-duration: 5.5s;
+}
+
+.skill-badge:nth-child(3n) {
+  animation-delay: 0.5s;
+  animation-duration: 4.8s;
+}
+
+.skill-badge:nth-child(5n) {
+  animation-delay: 2s;
+  animation-duration: 6s;
+}
+
+.skill-badge::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent);
+  pointer-events: none;
+}
+
+.skill-badge:hover {
+  animation-play-state: paused;
+  transform: translateY(-12px) scale(1.05);
+  background: rgba(60, 45, 80, 0.7);
+  border-color: rgba(162, 0, 255, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(162, 0, 255, 0.3);
+}
+
+.skill-badge i {
+  font-size: 2.8rem;
+  margin-bottom: 8px;
+  color: #fff;
+  opacity: 1;
+  transition: all 0.3s ease;
+  filter: grayscale(0%) drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
+}
+
+.skill-badge:hover i {
+  opacity: 1;
+  filter: grayscale(0%) brightness(1.2) drop-shadow(0 0 10px currentColor);
+  transform: scale(1.15);
+  text-shadow: 0 0 20px currentColor;
+}
+
+.skill-badge span {
+  font-size: 0.70rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-align: center;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.skill-badge:hover span {
+  color: #fff;
+}
+
+/* SERVICES CARDS */
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  background: rgba(18, 15, 20, 0.9);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+.service-bg-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8rem;
+  color: rgba(255, 255, 255, 0.04);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.service-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  gap: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.service-card:hover .service-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.service-title {
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.service-desc {
+  font-family: "Cairo", sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+}
+
+.hire-btn {
+  margin-top: 15px;
+  padding: 10px 30px;
+  background: rgba(20, 15, 25, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hire-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255, 0, 127, 0.8), rgba(122, 0, 255, 0.8));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 127, 0.15), inset 0 0 20px rgba(122, 0, 255, 0.1);
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+.service-card:hover .service-bg-icon {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+@media (max-width: 1200px) {
+  .skill-badge { width: 85px; height: 85px; border-radius: 18px; }
+  .skill-badge i { font-size: 2.4rem; }
+  .skill-badge span { font-size: 0.65rem; }
+  .skills-row, .skills-pyramid { gap: 16px; }
+}
+
+@media (max-width: 1024px) {
+  .skill-badge { width: 75px; height: 75px; border-radius: 16px; }
+  .skill-badge i { font-size: 2rem; margin-bottom: 6px; }
+  .skill-badge span { font-size: 0.6rem; }
+  .skills-row, .skills-pyramid { gap: 12px; }
+}
+
+@media (max-width: 768px) {
+  .about-card {
+    padding: 30px 20px;
+  }
+  .about-card .card-title {
+    font-size: 1.8rem;
+  }
+  .about-card p {
+    font-size: 1rem;
+  }
+  
+  .skill-badge { width: 60px; height: 60px; border-radius: 12px; }
+  .skill-badge i { font-size: 1.6rem; margin-bottom: 2px; }
+  .skill-badge span { font-size: 0.50rem; letter-spacing: 0; }
+  .skills-row, .skills-pyramid { gap: 8px; }
+  
+  .service-card {
+    width: 280px;
+    height: 280px;
+  }
+  .service-bg-icon {
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-badge { width: 50px; height: 50px; border-radius: 10px; }
+  .skill-badge i { font-size: 1.4rem; margin-bottom: 1px; }
+  .skill-badge span { font-size: 0.45rem; }
+  .skills-row, .skills-pyramid { gap: 6px; }
+
+  .service-card {
+    width: 100%;
+    height: auto;
+    min-height: 260px;
+  }
+}
